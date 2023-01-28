@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/todoListDB", {
+mongoose.connect("mongodb+srv://admin-rakshit:Test123@cluster0.cwwyb2x.mongodb.net/todoListDB", {
   useNewUrlParser: true,
 });
 
@@ -39,6 +39,7 @@ const listSchema = mongoose.Schema({
 
 const List = mongoose.model("List", listSchema);
 const day = date.getDate();
+
 app.get("/", (req, res) => {
   Item.find({}, (err, foundItems) => {
     if (foundItems.length === 0) {
@@ -109,5 +110,5 @@ app.post("/delete", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server is running on port 3000");
+  console.log("Server has started successfully");
 });
